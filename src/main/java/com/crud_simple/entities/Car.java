@@ -1,4 +1,4 @@
-package com.crud_simple.domain.user;
+package com.crud_simple.entities;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -8,22 +8,30 @@ import lombok.Setter;
 
 import java.util.UUID;
 
-@Entity
-@Table(name = "users")
+
 @Getter
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-public class User {
+@Entity
+@Table(name = "car")
+public class Car {
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
     private UUID id;
 
-    private String name;
+    @Column(nullable = false)
+    private String nameCar;
 
     @Column(nullable = false, unique = true)
-    private String email;
+    private String plate;
 
     @Column(nullable = false)
-    private String password;
+    private boolean available = true;
+
+
+    public Car(String nameCar, String plate) {
+        this.nameCar = nameCar;
+        this.plate = plate;
+    }
 }
