@@ -7,6 +7,9 @@ import com.crud_simple.mapper.CarMapper;
 import com.crud_simple.repositories.CarRepository;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+import java.util.stream.Collectors;
+
 @Service
 public class CarServices {
     private final CarRepository carRepository;
@@ -23,5 +26,13 @@ public class CarServices {
         Car saved = carRepository.save(car);
 
         return mapper.toDto(saved);
+    }
+
+    public List<CarResponseDto> findAll() {
+        List<Car> cars = carRepository.findAll();
+
+        return cars.stream()
+                .map(mapper::toDto)
+                .collect(Collectors.toList());
     }
 }
