@@ -1,0 +1,23 @@
+package com.crud_simple.entities;
+
+import jakarta.persistence.*;
+
+import java.time.LocalDateTime;
+
+@Entity
+@Table(name = "rentals")
+public class Rental {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.UUID)
+    private String id;
+
+    @ManyToOne
+    @JoinColumn(name = "car_id", nullable = false)
+    private Car car;
+
+    @Column(nullable = false)
+    private LocalDateTime rendetAt;
+
+    private LocalDateTime returnedAt;
+}
