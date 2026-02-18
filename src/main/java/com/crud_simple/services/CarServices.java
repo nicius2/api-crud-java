@@ -21,6 +21,11 @@ public class CarServices {
     }
 
     public CarResponseDto save(CarRequestDto dto) {
+
+        if (carRepository.findByPlate(dto.plate()).isPresent()) {
+            throw new RuntimeException("Plate already exists");
+        }
+
         Car car = mapper.toEntity(dto);
 
         Car saved = carRepository.save(car);
@@ -44,6 +49,4 @@ public class CarServices {
 
         return mapper.toDto(car);
     }
-
-
 }
