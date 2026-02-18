@@ -3,7 +3,6 @@ package com.crud_simple.controller;
 import com.crud_simple.api.ApiResponse;
 import com.crud_simple.dto.CarRequestDto;
 import com.crud_simple.dto.CarResponseDto;
-import com.crud_simple.entities.Car;
 import com.crud_simple.services.CarServices;
 import jakarta.validation.Valid;
 import org.springframework.http.HttpStatus;
@@ -37,5 +36,11 @@ public class CarController {
     @GetMapping
     public ResponseEntity<List<CarResponseDto>> findAll() {
         return ResponseEntity.ok(carServices.findAll());
+    }
+
+    @GetMapping("/{plate}")
+    public ResponseEntity<CarResponseDto> findByPlate(@PathVariable String plate) {
+        CarResponseDto dto = carServices.findByPlate(plate);
+        return ResponseEntity.ok(dto);
     }
 }

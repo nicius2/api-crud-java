@@ -35,4 +35,15 @@ public class CarServices {
                 .map(mapper::toDto)
                 .collect(Collectors.toList());
     }
+
+
+    // Searching for a car by its license plate.
+    public CarResponseDto findByPlate(String plate) {
+        Car car = carRepository.findByPlate(plate)
+                .orElseThrow(() -> new RuntimeException("Car not found"));
+
+        return mapper.toDto(car);
+    }
+
+
 }
