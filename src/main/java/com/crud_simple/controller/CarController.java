@@ -1,5 +1,6 @@
 package com.crud_simple.controller;
 
+import com.crud_simple.api.ApiResponse;
 import com.crud_simple.dto.CarRequestDto;
 import com.crud_simple.dto.CarResponseDto;
 import com.crud_simple.services.CarServices;
@@ -24,6 +25,10 @@ public class CarController {
     @PostMapping()
     public ResponseEntity<CarResponseDto> create(@RequestBody @Valid CarRequestDto dto) {
         CarResponseDto saved = carServices.save(dto);
+
+        ApiResponse<CarResponseDto> response =
+                new ApiResponse<>(true, "Car created successfully", saved);
+
         return ResponseEntity
                 .status(HttpStatus.CREATED)
                 .body(saved);
