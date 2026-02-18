@@ -29,7 +29,6 @@ public class Car {
     @Column(nullable = false)
     private boolean available = true;
 
-
     public Car(String nameCar, String plate) {
         this.nameCar = nameCar;
         this.plate = plate;

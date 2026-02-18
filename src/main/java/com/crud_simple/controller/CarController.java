@@ -3,6 +3,7 @@ package com.crud_simple.controller;
 import com.crud_simple.dto.CarRequestDto;
 import com.crud_simple.dto.CarResponseDto;
 import com.crud_simple.services.CarServices;
+import jakarta.validation.Valid;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -21,8 +22,10 @@ public class CarController {
     }
 
     @PostMapping()
-    public ResponseEntity<CarResponseDto> create(@RequestBody CarRequestDto dto) {
+    public ResponseEntity<CarResponseDto> create(@RequestBody @Valid CarRequestDto dto) {
         CarResponseDto saved = carServices.save(dto);
-        return ResponseEntity.status(HttpStatus.CREATED).body(saved);
+        return ResponseEntity
+                .status(HttpStatus.CREATED)
+                .body(saved);
     }
 }
