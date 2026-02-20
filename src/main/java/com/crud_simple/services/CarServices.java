@@ -8,6 +8,7 @@ import com.crud_simple.repositories.CarRepository;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.UUID;
 import java.util.stream.Collectors;
 
 @Service
@@ -25,11 +26,8 @@ public class CarServices {
         if (carRepository.findByPlate(dto.plate()).isPresent()) {
             throw new RuntimeException("Plate already exists");
         }
-
         Car car = mapper.toEntity(dto);
-
         Car saved = carRepository.save(car);
-
         return mapper.toDto(saved);
     }
 
@@ -41,7 +39,6 @@ public class CarServices {
                 .collect(Collectors.toList());
     }
 
-
     // Searching for a car by its license plate.
     public CarResponseDto findByPlate(String plate) {
         Car car = carRepository.findByPlate(plate)
@@ -49,4 +46,17 @@ public class CarServices {
 
         return mapper.toDto(car);
     }
+
+    public CarResponseDto updateAvailableCar(UUID carId, boolean available) {
+
+        Car car = carRepository.findById(carId)
+                .orElseThrow(() -> new RuntimeException("Car not found"));
+
+        car.setAvailable(available);
+
+        Car updateCar = carRepository.save(car);
+
+        return mapper.toDto(updateCar);
+    };
+
 }
