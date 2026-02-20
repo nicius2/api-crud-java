@@ -6,6 +6,7 @@ target/
 /src/main/resources/application-dev.properties
 .env
 .gitattributes
+mvnw.cmd
 
 ### STS ###
 .apt_generated
