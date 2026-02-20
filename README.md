@@ -1,6 +1,6 @@
 ## 🚗  Simple CRUD API
 
-imple CRUD API built for practical validation, database integration, migration control, containerization, and custom exception handling.
+Simple CRUD API built for practical validation, architecture, database integration, migration control, containerization, and custom exception handling.
 
 ## 🚀 Tech Stack
 
