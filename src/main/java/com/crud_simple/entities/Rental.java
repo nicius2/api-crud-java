@@ -1,13 +1,18 @@
 package com.crud_simple.entities;
 
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.hibernate.annotations.CreationTimestamp;
 
 import java.time.LocalDateTime;
 
 @Getter
 @Setter
+@NoArgsConstructor
+@AllArgsConstructor
 @Entity
 @Table(name = "rentals")
 public class Rental {
@@ -21,7 +26,7 @@ public class Rental {
     private Car car;
 
     @Column(nullable = false)
-    private LocalDateTime rendedAt;
+    private LocalDateTime rentedAt;
 
     private LocalDateTime returnedAt;
 }

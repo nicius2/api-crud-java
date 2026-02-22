@@ -8,7 +8,7 @@ import java.time.LocalDateTime;
 public record RentalRequestDto(
 
         @NotBlank(message = "Selecione o ID do Carro")
-        String cardId,
+        String carId,
 
         LocalDateTime rentedAt
 ) {

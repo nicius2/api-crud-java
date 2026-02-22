@@ -12,7 +12,7 @@ public class RentalMapper {
     public Rental toEntity(RentalRequestDto dto, Car car) {
         Rental rental = new Rental();
         rental.setCar(car);
-        rental.setRendedAt(dto.rentedAt());
+        rental.setRentedAt(dto.rentedAt());
         return rental;
     }
 
@@ -21,7 +21,7 @@ public class RentalMapper {
                 rental.getId(),
                 rental.getCar().getNameCar(),
                 rental.getCar().getPlate(),
-                rental.getRendedAt(),
+                rental.getRentedAt(),
                 rental.getReturnedAt()
         );
     }
